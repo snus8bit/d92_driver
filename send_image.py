@@ -1,6 +1,7 @@
 """Send one image to the MiraBox D92."""
 
 from pathlib import Path
+import time
 
 from d92_driver import D92Driver
 
@@ -14,10 +15,10 @@ def main() -> None:
         display.clear()
         display.send_image(IMAGE)
         print(f"Displayed: {IMAGE.name}")
-        print("Press Ctrl+C to stop.")
+        print("Sending CONNECT every 4 seconds. Press Ctrl+C to stop.")
         try:
             while True:
-                input("Press ENTER to send CONNECT (or Ctrl+C to exit)...")
+                time.sleep(4)
                 display.connect()
         except KeyboardInterrupt:
             print("\nDone.")
